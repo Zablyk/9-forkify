@@ -1,0 +1,12 @@
+{
+    "preset": [
+        "env", {
+            "target": {
+                "broesers": [
+                    "last 5 versions",
+                    "ie >= 8"
+                ]
+            }
+        }
+    ]
+}
