@@ -4090,19 +4090,31 @@ eval("\n\nmodule.exports = function (module) {\n\tif (!module.webpackPolyfill) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _test = __webpack_require__(/*! ./test */ \"./src/js/test.js\");\n\nvar _test2 = _interopRequireDefault(_test);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar x = 23;\nconsole.log('I imported ' + _test2.default + ' from another module called test.js. Variable x is ' + x + '!');\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("\n\nvar _Search = __webpack_require__(/*! ./models/Search */ \"./src/js/models/Search.js\");\n\nvar _Search2 = _interopRequireDefault(_Search);\n\nvar _searchView = __webpack_require__(/*! ./views/searchView */ \"./src/js/views/searchView.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconsole.log('Using imported functions ' + (0, _searchView.add)(_searchView.ID, 2) + ' and ' + (0, _searchView.multiply)(3, 5) + '. ' + _Search2.default);\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
-/***/ "./src/js/test.js":
-/*!************************!*\
-  !*** ./src/js/test.js ***!
-  \************************/
+/***/ "./src/js/models/Search.js":
+/*!*********************************!*\
+  !*** ./src/js/models/Search.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nconsole.log('Imported module');\nexports.default = 83;\n\n//# sourceURL=webpack:///./src/js/test.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'I am an exported string.';\n\n//# sourceURL=webpack:///./src/js/models/Search.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/searchView.js":
+/*!************************************!*\
+  !*** ./src/js/views/searchView.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar add = exports.add = function add(a, b) {\n  return a + b;\n};\nvar multiply = exports.multiply = function multiply(a, b) {\n  return a * b;\n};\nvar ID = exports.ID = 23;\n\n//# sourceURL=webpack:///./src/js/views/searchView.js?");
 
 /***/ }),
 
