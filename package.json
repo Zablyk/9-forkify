@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "author": "OLeg Zablotskyi",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
   }
 }
