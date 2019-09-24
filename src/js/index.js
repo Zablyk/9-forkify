@@ -8,12 +8,21 @@ import Search from './models/Search';
  */
 const = state{};
 
-const controlSearch = () => {
-    //Get a query from a view
+const controlSearch = async () => {
+    // 1) Get a query from a view
     const query = 'pizza';//TODO
 
     if(query) {
-        //New search object and add to state
+        // 2) New search object and add to state
+        state.search = new Search(query);
+
+        // 3) Prepare UI for a result
+
+        // 4) Search for reciepes
+        await state.search.getResults();    
+
+        // 5) Render results on UI
+        console.log(state.search.result);
     }
 };
 
@@ -22,6 +31,3 @@ document.querySelector('.search').addEventListener('submit', e => {
     controlSearch();
 });
 
-const search = new Search('pizza');
-console.log(search);
-search.getResults();    
