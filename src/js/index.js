@@ -6,7 +6,7 @@ import Search from './models/Search';
  * - Shopping list object
  * - Liked recipes  
  */
-const = state{};
+const state = {};
 
 const controlSearch = async () => {
     // 1) Get a query from a view
@@ -24,7 +24,7 @@ const controlSearch = async () => {
         // 5) Render results on UI
         console.log(state.search.result);
     }
-};
+}
 
 document.querySelector('.search').addEventListener('submit', e => {
     e.preventDefault();
