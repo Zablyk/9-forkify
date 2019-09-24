@@ -20,5 +20,5 @@ const renderRecipe = recipe => {
 }
 
 export const renderResults = recipes => {
-       recipes.forEach(renderRecipe);
+        recipes.forEach(renderRecipe); //it's = to recipes.forEach(el => renderRecipe(el))  
 } 
