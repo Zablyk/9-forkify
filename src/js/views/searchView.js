@@ -27,7 +27,7 @@ const limitRecipeTitle = (title, limit = 17) => {
         }
         return acc + cur.length
        }, 0); 
-       return (`${newTitle.join(' ')}...`);
+       return `${newTitle.join(' ')}...`;
     } 
     return title;
 } 
