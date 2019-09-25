@@ -40,7 +40,11 @@ elements.searchForm.addEventListener('submit', e => {
 
 //event listener for a page buttons
 elements.searchResPages.addEventListener('click', e => {
-    const btn = e.target.closest('.btn-inline') //add a closest method
-    console.log(btn);
+    const btn = e.target.closest('.btn-inline'); //add a closest method
+    if(btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+    }
 });
 
