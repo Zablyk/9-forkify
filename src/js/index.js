@@ -29,12 +29,17 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderLoader(elements.searchRes);
 
+        try {
         // 4) Search for reciepes
         await state.search.getResults();    
 
         // 5) Render results on UI
         clearLoader();
         searchView.renderResults(state.search.result);
+        } catch (err) {
+            alert('Something wrong with the search...');
+        }
+        
     }
 }
 
