@@ -4,13 +4,13 @@ import { key, proxy } from '../config';
 
 
 export default class Recipe {
-    cunstructor(id){
+    constructor(id) {
         this.id = id;
     }
 
     async getRecipe() {
         try { 
-            const res = await axios (`https://www.food2fork.com/api/get?key=${key}&rID=${this.id}`);
+            const res = await axios(`${proxy}http://food2fork.com/api/get?key=${key}&rId=${this.id}`);
             this.title = res.data.recipe.title;
             this.author = res.data.recipe.publisher;
             this.image = res.data.recipe.img_url; 
@@ -19,7 +19,7 @@ export default class Recipe {
             console.log(res);
         } catch (error) {
             console.log(error);
+            alert('Something went wrong :(');
         }
     }
-    
 }

@@ -1,2 +1,2 @@
-export const proxy = 'https://crossorigin.me/https://google.com';//in Windows works without any proxy;
-export const key = '301f8869c9aab7ed62e04c75a59c2727';
+export const proxy = 'https://cors-anywhere.herokuapp.com/';//'https://crossorigin.me/https://google.com';//in Windows works without any proxy;
+export const key = '301f8869c9aab7ed62e04c75a59c2727';//'301f8869c9aab7ed62e04c75a59c2727';
