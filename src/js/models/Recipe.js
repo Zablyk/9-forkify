@@ -49,7 +49,18 @@ export default class Recipe {
                console.log(ingredient);
                 ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
                // 3) PArse ingradients into count, unit and ingredient
-                return ingredient;
+               const arrIng = ingredient.split(' ');
+               const unitIndex = arrIng.findIndex(el2 = unitsShort.includes(el2)); 
+               
+                if(unitIndex > -1) {
+                    //There is a unit
+                } else if (unitIndex === -1) {
+                    //Theri is NO UNIT
+                }
+
+                
+
+               return ingredient;
 
             });
             this.ingredients = newIngredients;
