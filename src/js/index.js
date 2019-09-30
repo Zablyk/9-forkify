@@ -17,28 +17,42 @@ const state = {};
 
 const controlSearch = async () => {
     // 1) Get a query from a view
-    const query = searchView.getInput();
+    //const query = searchView.getInput();
+    const query = 'pizza';
   
 
     if(query) {
         // 2) New search object and add to state
         state.search = new Search(query);
+        
 
         // 3) Prepare UI for a result
         searchView.clearInput();
         searchView.clearResults();
         renderLoader(elements.searchRes);
 
+        try {
         // 4) Search for reciepes
         await state.search.getResults();    
 
         // 5) Render results on UI
         clearLoader();
         searchView.renderResults(state.search.result);
+        } catch (err) {
+            alert('Something wrong with the search...');
+            clearLoader();
+        }
+        
     }
 }
 
 elements.searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
+
+//TESTING
+window.addEventListener('load', e => {
     e.preventDefault();
     controlSearch();
 });
@@ -56,7 +70,35 @@ elements.searchResPages.addEventListener('click', e => {
 /**
  * RECIPE CONTROLLER
  */
+const controlRecipe = async () => {
+    //Get id from URL
+    const id = window.location.hash.replace('#', ''); //window.location = is entire URL
+    console.log(id);
+    
+    if(id){
+        //Prepare UI for changes
 
- const r = new Recipe(47746);
- r.getRecipe();
- console.log(r);
+        //Create new object
+        state.recipe = new Recipe(id);
+
+        //Testing
+        window.r = state.recipe;
+       try{
+        //Get recipe data
+        await state.recipe.getRecipe();
+
+        //Calculate servings and coocing time
+        state.recipe.calcTime();
+        state.recipe.calcServings();
+        //Render recipe
+        console.log(state.recipe);
+       } catch(err){
+           alert('Error processing recipe!');
+       }
+        
+    } 
+};
+
+// window.addEventListener('hashchange', controlRecipe);
+// window.addEventListener('load', controlRecipe);
+['hashchange', 'load'].forEach(event => addEventListener(event, controlRecipe)); //= 2 lines before
