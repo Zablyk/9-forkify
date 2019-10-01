@@ -35,7 +35,7 @@ export default class Recipe {
         }
 
         parseIngredients() {
-            const unitsLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon', 'teaspoons', 'cups', 'pounds'];
+            const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
             const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];  
 
             const newIngredients = this.ingredients.map(el => {
@@ -47,15 +47,28 @@ export default class Recipe {
                 });
                // 2) Remove parentheses
                console.log(ingredient);
-                ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
+                ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
                // 3) PArse ingradients into count, unit and ingredient
                const arrIng = ingredient.split(' ');
-               const unitIndex = arrIng.findIndex(el2 = unitsShort.includes(el2)); 
+               const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2)); 
                
+                let objIng;
                 if(unitIndex > -1) {
                     //There is a unit
+                } else if (parseInt(arrIng[0], 10) ) {
+                    //There is NOT UNIT but first element is number
+                    objIng = {
+                        count: parseInt(arrIng[0], 10),
+                        unit: '',
+                        ingredient: arrIng.slice(1).join(' ')
+                    }
                 } else if (unitIndex === -1) {
-                    //Theri is NO UNIT
+                    //Theri is NO UNIT and no number in first possition
+                    objIng = {
+                        count: 1,
+                        unit: '',
+                        ingredient //it's = to ingredient : ingredien 
+                    }
                 }
 
                 
