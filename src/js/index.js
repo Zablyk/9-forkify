@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import * as searchView from './views/searchView'; 
+import * as recipeView from './views/recipeView'; 
 import { elements, renderLoader, clearLoader } from './views/base';
 
 /**Global state of the app
@@ -78,6 +79,7 @@ const controlRecipe = async () => {
        try{
         //Get recipe data and parse ingredients
         await state.recipe.getRecipe();
+        console.log(state.recipe.ingredients);
         state.recipe.parseIngredients();
 
         //Calculate servings and coocing time
@@ -88,7 +90,6 @@ const controlRecipe = async () => {
        } catch(err){
            alert('Error processing recipe!');
        }
-        
     } 
 };
 
