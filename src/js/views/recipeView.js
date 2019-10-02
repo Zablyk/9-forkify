@@ -1,5 +1,18 @@
 import { elements } from './base';
 
+const createIngredient = ingredient => `
+    <li class="recipe__item">
+        <svg class="recipe__icon">
+            <use href="img/icons.svg#icon-check"></use>
+        </svg>
+        <div class="recipe__count">${ingredient.count}</div>
+        <div class="recipe__ingredient">
+            <span class="recipe__unit">${ingredient.unit}</span>
+            ${ingredient.ingredient}
+        </div>
+    </li>
+`;
+
 export const renderRecipe = recipe => {
     const markup = `
         <figure class="recipe__fig">
@@ -50,8 +63,8 @@ export const renderRecipe = recipe => {
 
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
+            ${recipe.ingredients.map(el => createIngredient(el)).join('')}
 
-            
                 <li class="recipe__item">
                     <svg class="recipe__icon">
                         <use href="img/icons.svg#icon-check"></use>
