@@ -2,8 +2,9 @@ import { elements } from './base';
 import { Fraction } from 'fractional';
 
 export const clearRecipe = () => {
-    elements.recipe.innerHTML = '';
-};
+       elements.recipe.innerHTML = '';
+ }
+
 
 const formatCount = count => {
     if (count) {
@@ -17,7 +18,7 @@ const formatCount = count => {
             const fr = new Fraction(count);
             return `${fr.numerator}/${denominator}`;
         } else {
-            const fr = new Fraction(count - int);
+            const fr = new Fraction (count - int);
             return `${int} ${fr.numerator}/${denominator}`;
         }
 
