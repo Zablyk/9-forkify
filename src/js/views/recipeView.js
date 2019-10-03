@@ -1,4 +1,5 @@
 import { elements } from './base';
+import { format } from 'url';
 //import { Fraction } from 'fractional';
 
 export const clearRecipe = () => {
@@ -167,5 +168,14 @@ export const renderRecipe = recipe => {
     </div>
     `;
     elements.recipe.insertAdjacentHTML('afterbegin', markup);
+};
 
+export const updateServingsInredients = recipe => {
+    //Update servings
+    document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
+    //update ingredients
+    const countElements = Array.from(document.querySelectorAll('.recipe__count'));
+    countElements.forEach((el, i) => {
+        el.textContent = formatCount(recipe.ingredients[i].count);
+    });
 };
