@@ -1,10 +1,40 @@
 import { elements } from './base';
-//import { Fraction } from 'fractional';
+import { create, all } from 'mathjs';
 
 export const clearRecipe = () => {
        elements.recipe.innerHTML = '';
  }
 
+ 
+ const config = {
+    number: 'Fraction'
+ };
+ const math = create( all, config);
+
+const formatCount = count => {
+    
+    if (count) {
+        //Ex. count = 2.5 --> 2 1/2
+        //Ex. count = 0.5 --> 1/2
+        const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));
+        
+  
+        if (int === 0) {
+            const fr = math.fraction(count);
+            return `${fr}`;//`${fr.numerator}/${denominator}`;
+            
+        } else {
+            const fr = math.fraction(count);
+            return `${int} ${fr}`;//`${int} ${fr.numerator}/${denominator}`;
+        }
+
+    }
+    return '?';
+};
+
+
+
+ /*
  var numberToFraction = function( amount ) {
 	// This is a whole number and doesn't need modification.
 	if ( parseFloat( amount ) === parseInt( amount ) ) {
@@ -36,27 +66,8 @@ export const clearRecipe = () => {
 	}
 	return amount;
 };
-
-/*const formatCount = count => {
-    if (count) {
-        Ex. count = 2.5 --> 2 1/2
-        Ex. count = 0.5 --> 1/2
-        const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));
-        
-        if(!dec) return count;
-
-        if (int === 0) {
-            const fr = new Fraction(count);
-            return `${fr.numerator}/${denominator}`;
-        } else {
-            const fr = new Fraction (count - int);
-            return `${int} ${fr.numerator}/${denominator}`;
-        }
-
-    }
-    return '?';
-};
 */
+
 
 
 const createIngredient = ingredient => `
@@ -64,7 +75,7 @@ const createIngredient = ingredient => `
         <svg class="recipe__icon">
             <use href="img/icons.svg#icon-check"></use>
         </svg>
-        <div class="recipe__count">${numberToFraction(ingredient.count)}</div>
+        <div class="recipe__count">${formatCount(ingredient.count)}</div>
         <div class="recipe__ingredient">
             <span class="recipe__unit">${ingredient.unit}</span>
             ${ingredient.ingredient}
