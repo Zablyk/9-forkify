@@ -129,28 +129,16 @@ export const renderRecipe = recipe => {
 
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
-            ${recipe.ingredients.map(el => createIngredient(el)).join('')}
+                ${recipe.ingredients.map(el => createIngredient(el)).join('')}
+             </ul>
 
-                <li class="recipe__item">
-                    <svg class="recipe__icon">
-                        <use href="img/icons.svg#icon-check"></use>
-                    </svg>
-                <div class="recipe__count">1000</div>
-                <div class="recipe__ingredient">
-                    <span class="recipe__unit">g</span>
-                    pasta
-                </div>
-            </li>
-
-        </ul>
-
-        <button class="btn-small recipe__btn">
-            <svg class="search__icon">
-                <use href="img/icons.svg#icon-shopping-cart"></use>
-            </svg>
-            <span>Add to shopping list</span>
-        </button>
-    </div>
+            <button class="btn-small recipe__btn recipe__btn--add">
+                <svg class="search__icon">
+                    <use href="img/icons.svg#icon-shopping-cart"></use>
+                </svg>
+                <span>Add to shopping list</span>
+            </button>
+        </div>
 
     <div class="recipe__directions">
         <h2 class="heading-2">How to cook it</h2>
