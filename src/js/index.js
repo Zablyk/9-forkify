@@ -179,6 +179,7 @@ const controlLike = () => {
         //Remove like from UI list
         console.log(state.likes);
     }
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
 }; 
 
 
