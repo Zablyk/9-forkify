@@ -151,6 +151,7 @@ elements.shopping.addEventListener('click', e => {
  */
 //Testing
 state.likes = new Likes();
+likesView.toggleLikeMenu(state.likes.getNumLikes());
 
 const controlLike = () => {
     if (!state.likes) state.likes = new Likes();
@@ -168,6 +169,7 @@ const controlLike = () => {
         //Toggle the like botton
         likesView.toggleLikeBtn(true);    
         //Add like to UI list
+        likesView.renderLike(newLike);  
         console.log(state.likes);    
            
     //User has liked a current recipe   
