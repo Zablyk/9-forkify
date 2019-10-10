@@ -16,7 +16,6 @@ export default class Recipe {
             this.img = res.data.recipe.image_url; 
             this.url = res.data.recipe.source_url;
             this.ingredients = res.data.recipe.ingredients;
-            console.log(res);
         } catch (error) {
             console.log(error);
             alert('Something went wrong :(');
@@ -47,8 +46,7 @@ export default class Recipe {
                     ingredient = ingredient.replace(unit, unitsShort[i]);
                 });
                // 2) Remove parentheses
-               console.log(ingredient);
-                ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+               ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
                // 3) Parse ingradients into count, unit and ingredient
                const arrIng = ingredient.split(' ');
                const unitIndex = arrIng.findIndex(el2 => units.includes(el2)); 
